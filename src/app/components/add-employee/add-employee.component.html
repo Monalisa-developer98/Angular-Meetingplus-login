@@ -1,0 +1,35 @@
+<form class="add-employee-form" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="empName" class="form-label">Employee Name <span>*</span></label>
+                <input type="text" class="form-control" id="empName" [(ngModel)]="empName" name="empName" placeholder="Enter Employee Name" required>
+            </div>  
+        </div>
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="empEmail" class="form-label">Email<span>*</span></label>
+                <input type="email" class="form-control" id="empEmail" [(ngModel)]="empEmail" name="empEmail" placeholder="Enter Email" required>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="empPassword" class="form-label">Password<span>*</span></label>
+                <input type="password" class="form-control" id="empPassword" [(ngModel)]="empPassword" name="empPassword" placeholder="Enter Password" required>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="empDesign" class="form-label">Employee Designation <span>*</span></label>
+                <input type="text" class="form-control" id="empDesign" [(ngModel)]="empDesign" name="empDesign" placeholder="Enter Designation" required>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="empDepart" class="form-label">Department <span>*</span></label>
+                <input type="text" class="form-control" id="empDepart" [(ngModel)]="empDepart" name="empDepart" placeholder="Enter Department" required>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="save Mom-btn mt-3"><p>Submit</p></button>
+</form>

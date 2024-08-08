@@ -1,0 +1,106 @@
+
+<header>
+    <div class="top-header">
+        <div class="container">
+            <div class="top-header-container d-flex justify-content-between align-items-center">
+                <div class="header-left">
+                    <h1>Meeting Plus</h1>
+                </div>
+                <div class="header-right d-flex gap-3">
+                    <div class="create-meeting-button">
+                        <a routerlink="meeting/agenda" href="/meeting/agenda">
+                            <button class="Mom-btn"><p>Create Meeting</p></button>
+                        </a>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="d-flex admin-box">
+                            <img class="user" src="http://demo2.ntspl.co.in/assets/images/profile.png">
+                            <span>{{name}}</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="logout" (click)="logout()">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-menu">
+        <nav class="navbar navbar-expand-lg p-0">
+            <ul class="navbar-nav flex-row">
+                <li class="nav-item">
+                  <a class="nav-link active d-flex flex-column align-items-center border-right" aria-current="page" href="#">
+                    <i class="bi bi-house-door"></i> <span class="menu-label">Home</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link d-flex flex-column align-items-center" href="#">
+                    <i class="bi bi-clock"></i> <span class="menu-label">Timeline</span>
+                </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+  </header>
+  <div class="sidebar">
+    <div class="logo"><img src="../../../assets/images/Ntspl-Logo-white.png"></div>
+    
+    <ul class="navbar-nav me-auto mt-5">
+        <li class="nav-item">
+          <a class="nav-link text-white d-flex gap-2 align-items-center"  href="#"><img src="../../../assets/images/meeting.png"><span class="nav-link-label">Meetings</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white d-flex gap-2 align-items-center" href="#"><img src="../../../assets/images/clipboard.png"><span class="nav-link-label">Action</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white d-flex gap-2 align-items-center" href="#"><img src="../../../assets/images/settings.png"><span class="nav-link-label">Manage</span></a>
+        </li>
+    </ul>
+  
+  </div>
+  <div class="meeting-container">
+    <div class="meeting-table p-3">
+  
+       <div class="table-header d-flex justify-content-between">
+        <h2 class="h2 float-start">Add Employees</h2>  
+       </div>
+       
+        <div class="table-container p-3 border-1 rounded-3">
+            <app-add-employee></app-add-employee>
+        </div>
+        <div class="table-header d-flex justify-content-between">
+            <h2 class="h2 float-start">Manage Employees</h2>  
+           </div>
+           <div class="table-container p-3 border-1 rounded-3">
+            <div class="tbl-text-search">
+              <div class="left-tbl-text">
+                <p>{{ showingRange }}</p>
+              </div>
+              <div class="search-box">
+                <input type="search" placeholder="search" [(ngModel)]="searchKey" (ngModelChange)="onSearch()" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4F2CC8" viewBox="0 0 16 16" class="bi bi-search">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"></path>
+                </svg>
+              </div>
+            </div>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Designation</th>
+                  <th>Department</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let employee of employees | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+                  <td>{{ employee.name }}</td>
+                  <td>{{ employee.email }}</td>
+                  <td>{{ employee.designation }}</td>
+                  <td>{{ employee.department }}</td>
+                </tr>              
+              </tbody>
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>          
+    </div>
+</div>
+  
+  
