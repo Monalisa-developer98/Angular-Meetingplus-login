@@ -49,7 +49,7 @@ export class GlobalService {
     );
   }
 
-  getRoleFromToken(): string | null {
+getRoleFromToken(): string | null {
     const token = localStorage.getItem('token');
     if (!token) {
       console.error('No token found in local storage');
@@ -68,11 +68,22 @@ export class GlobalService {
       console.error('Failed to decode token', e);
       return null;
     }
-  }
+}
 
 getEmployees(order: number, limit: number, page: number, payload: any): Observable<any> {
   const url = `${this.apiUrl}/listEmployee?order=${order}&page=${page}`;
-  return this.http.post(url, payload);
+  const token = localStorage.getItem('token');
+
+    if (!token) {
+      return throwError('No token found in local storage');
+    }
+
+    const tokenStr = token.startsWith('Bearer ') ? token.substring(7) : token;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${tokenStr}`,
+      'Content-Type': 'application/json'
+    });
+  return this.http.post(url, payload, { headers });
 }
- 
+
 }
