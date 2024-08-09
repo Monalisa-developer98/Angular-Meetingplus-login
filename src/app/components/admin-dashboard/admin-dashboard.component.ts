@@ -37,9 +37,6 @@ export class AdminDashboardComponent implements OnInit {
     this.employeeService.getEmployees(order, this.itemsPerPage, this.p, payload).subscribe((response: any) => {
       this.employees = response.data.employeeData;
       this.totalItems = response.data.totalCount;
-
-      this.showingFrom = (this.p - 1) * this.itemsPerPage + 1;
-      this.showingTo = Math.min(this.p * this.itemsPerPage, this.totalItems);
     });
   }
 
