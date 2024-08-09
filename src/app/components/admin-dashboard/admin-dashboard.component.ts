@@ -50,6 +50,11 @@ export class AdminDashboardComponent implements OnInit {
     const end = Math.min(this.p * this.itemsPerPage, this.totalItems);
     return `Showing ${start} to ${end} of ${this.totalItems} entries`;
   }
+
+  onItemsPerPageChange(event: Event): void {
+    this.p = 1; 
+    this.loadEmployees();
+  }
   
   logout(): void {
     localStorage.removeItem('token');

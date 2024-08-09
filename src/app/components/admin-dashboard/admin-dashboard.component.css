@@ -303,3 +303,6 @@ button.btn-filter{
     padding: 0;
     border-radius: 5px;
 }
+.pagination{
+    justify-content: space-between;
+}
